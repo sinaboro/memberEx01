@@ -547,7 +547,7 @@ public class MemberContoller {
 <img src="/images/start24.PNG">
 <img src="/images/start25.PNG">
 
-<h4>2. MemberContrller -> 멤버 삭제</h4>
+<h4>3. MemberContrller -> 멤버 삭제</h4>
 
 <h6>MemberController 추가</h6>
 
