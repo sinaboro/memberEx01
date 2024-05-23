@@ -10,3 +10,7 @@ create database member default character set utf8 collate utf8_general_ci;
 
 <h3>1</h3>
 <img src="/images/start01.PNG">
+<h3>2</h3>
+<img src="/images/start02.PNG">
+<h3>3</h3>
+<img src="/images/start03.PNG">
