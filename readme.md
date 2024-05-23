@@ -162,3 +162,7 @@ class MemberServiceTest {
     }
 }
 ```
+
+<h4>5. 실행 및 mysql 추가 확인</h4>
+<img src="/images/start14.PNG">
+<img src="/images/start15.PNG">
