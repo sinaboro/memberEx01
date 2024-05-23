@@ -37,7 +37,7 @@ spring.datasource.password=1234
 
 <h2>3. 코드 구현 </h2>
 
-<h4>entity 폴더 Member</h4>
+<h4>1. entity 폴더 Member</h4>
 
 ```java
 package com.member.entity;
@@ -62,3 +62,6 @@ public class Member {
 }
 
 ```
+
+<h4>2. 생성된 DB를 mysql 확인</h4>
+<img src="/images/start08.PNG">
