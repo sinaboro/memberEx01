@@ -67,7 +67,7 @@ public class Member {
 <img src="/images/start08.PNG">
 
 
-<h2>4. CRUD 구현 및 Test </h2>
+<h2>4. CRUD 구현 및 TEST </h2>
 
 <h4>1. repository -> MemberRepository </h4>
 
