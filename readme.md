@@ -129,3 +129,36 @@ public class MemberService {
     testAnnotationProcessor 'org.projectlombok:lombok'
 ```
 
+<h4>5. MemberServiceTest 추가</h4>
+
+<img src="/images/start11.PNG">
+<img src="/images/start12.PNG">
+<img src="/images/start13.PNG">
+
+```java
+package com.member.service;
+
+import com.member.entity.Member;
+import lombok.extern.log4j.Log4j2;
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+@SpringBootTest
+@Log4j2
+class MemberServiceTest {
+
+    @Autowired
+    private MemberService memberService;
+
+    @Test
+    public void testInsert(){
+        Member member = new Member();
+        member.setAge(20);
+        member.setName("까미");
+        member.setAddress("수원시");
+
+        memberService.register(member);
+
+    }
+}
+```
