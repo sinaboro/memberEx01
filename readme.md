@@ -14,3 +14,13 @@ create database member default character set utf8 collate utf8_general_ci;
 <img src="/images/start02.PNG">
 <h3>3</h3>
 <img src="/images/start03.PNG">
+
+<h3>application.properties 추가</h3>
+
+```java
+#MySQL 설정
+spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
+spring.datasource.url=jdbc:mysql://localhost:3306/member?serverTimezone=UTC
+spring.datasource.username=root
+spring.datasource.password=1234
+```
