@@ -64,7 +64,5 @@ public class MemberContoller {
         Long memberId = Long.parseLong(id);
         memberService.delete(memberId);
         return "redirect:/member/list";
-
     }
-
 }
