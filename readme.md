@@ -166,3 +166,29 @@ class MemberServiceTest {
 <h4>5. 실행 및 mysql 추가 확인</h4>
 <img src="/images/start14.PNG">
 <img src="/images/start15.PNG">
+
+<h4>5. CRUD -> update</h4>
+
+```java
+  class MemberServiceTest {
+
+    @Autowired
+    private MemberService memberService;
+
+    //CRUD -> update
+    @Test
+    public void testupdate(){
+        Member member = new Member();
+        member.setId(1L);
+        member.setAge(28);
+        member.setName("까미");
+        member.setAddress("안산시");
+
+        memberService.register(member);
+    }
+```
+
+<img src="/images/start16.PNG">
+<img src="/images/start17.PNG">
+<img src="/images/start18.PNG">
+
