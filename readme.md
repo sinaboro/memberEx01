@@ -78,3 +78,9 @@ public interface MemberRepository extends JpaRepository<Member, Long> {
 }
 
 ```
+
+<h4>3. lombok 추가</h4>
+<img src="/images/start09.PNG">
+
+<h6>build.gradle  추가하면됨</h6>
+<img src="/images/start10.PNG">
