@@ -413,8 +413,8 @@ public class MemberContoller {
             <td th:text="${member.phone}"></td>
             <td th:text="${member.address}"></td>3
             <td>
-                <a th:href="@{/members/edit/{id}(id=${member.id})}">수정</a>&nbsp;&nbsp;
-                <form th:action="@{/members/delete/{id}(id=${member.id})}" method="post" style="display:inline;">
+                <a th:href="@{/member/edit/{id}(id=${member.id})}">수정</a>&nbsp;&nbsp;
+                <form th:action="@{/member/delete/{id}(id=${member.id})}" method="post" style="display:inline;">
                     <input type="hidden" name="_method" value="delete" />
                     <button type="submit">삭제</button>
                 </form>
@@ -483,3 +483,66 @@ public class MemberContoller {
 </html>
 
 ```
+
+<h4>2. MemberContrller -> 멤버 수정</h4>
+
+<h6>MemberController 추가</h6>
+
+```java
+@GetMapping("/edit/{id}")
+    public String updateForm(@PathVariable("id") String id,Model model){
+        Long memberId = Long.parseLong(id);
+        Member member = memberService.read(memberId);
+        model.addAttribute("member", member);
+        return "member/updateForm";
+    }
+
+    @PostMapping("/update")
+    public String update(@ModelAttribute Member member){
+       log.info("update..........." + member);
+        memberService.register(member);
+        return "redirect:list";
+    }
+```
+
+<h6>updateForm 생성</h6>
+
+```html
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>New Member</title>
+</head>
+<body>
+<h1>Update Member Form</h1>
+<form th:action="@{/member/update}" th:object="${member}" method="post">
+    <input type="hidden" th:field="*{id}">
+    <div >
+        <label for="name">Name:</label>
+        <input type="text" id="name" th:field="*{name}"  />
+    </div>
+    <div >
+        <label for="age">age:</label>
+        <input type="text" id="age" th:field="*{age}"  />
+    </div>
+
+    <div >
+        <label for="phone">phone:</label>
+        <input type="text" id="phone" th:field="*{phone}"  />
+    </div>
+
+    <div >
+        <label for="address">address:</label>
+        <input type="text" id="address" th:field="*{address}"  />
+    </div>
+    <div>
+        <button type="submit">Save</button>
+    </div>
+</form>
+</body>
+</html>
+
+```
+
+<img src="/images/start24.PNG">
+<img src="/images/start25.PNG">

@@ -6,10 +6,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -39,6 +36,23 @@ public class MemberContoller {
     @PostMapping("/new")
     public String create(@ModelAttribute("member") Member member){
         log.info("------------------------");
+        memberService.register(member);
+        return "redirect:list";
+    }
+
+    // <a th:href="@{/member/edit/{id}(id=${member.id})}">수정</a>&nbsp;&nbsp;
+
+    @GetMapping("/edit/{id}")
+    public String updateForm(@PathVariable("id") String id,Model model){
+        Long memberId = Long.parseLong(id);
+        Member member = memberService.read(memberId);
+        model.addAttribute("member", member);
+        return "member/updateForm";
+    }
+
+    @PostMapping("/update")
+    public String update(@ModelAttribute Member member){
+       log.info("update..........." + member);
         memberService.register(member);
         return "redirect:list";
     }

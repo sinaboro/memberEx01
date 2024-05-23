@@ -35,8 +35,8 @@
             <td th:text="${member.phone}"></td>
             <td th:text="${member.address}"></td>3
             <td>
-                <a th:href="@{/members/edit/{id}(id=${member.id})}">수정</a>&nbsp;&nbsp;
-                <form th:action="@{/members/delete/{id}(id=${member.id})}" method="post" style="display:inline;">
+                <a th:href="@{/member/edit/{id}(id=${member.id})}">수정</a>&nbsp;&nbsp;
+                <form th:action="@{/member/delete/{id}(id=${member.id})}" method="post" style="display:inline;">
                     <input type="hidden" name="_method" value="delete" />
                     <button type="submit">삭제</button>
                 </form>
@@ -45,6 +45,5 @@
         </tbody>
     </table>
 </div>
-
 </body>
 </html>
