@@ -66,7 +66,10 @@ public class Member {
 <h4>2. 생성된 DB를 mysql 확인</h4>
 <img src="/images/start08.PNG">
 
-<h4>3. repository -> MemberRepository </h4>
+
+<h2>4. CRUD 구현 </h2>
+
+<h4>1. repository -> MemberRepository </h4>
 
 ```java
 package com.member.repository;
@@ -79,8 +82,50 @@ public interface MemberRepository extends JpaRepository<Member, Long> {
 
 ```
 
-<h4>3. lombok 추가</h4>
+<h4>2. lombok 추가</h4>
 <img src="/images/start09.PNG">
 
 <h6>build.gradle  추가하면됨</h6>
 <img src="/images/start10.PNG">
+<br>
+
+
+<h4>3. service - > MemberService</h4>
+
+```java
+package com.member.service;
+
+import com.member.entity.Member;
+import com.member.repository.MemberRepository;
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
+import lombok.Setter;
+import org.springframework.stereotype.Service;
+
+@Service
+@Getter
+@Setter
+@RequiredArgsConstructor
+public class MemberService {
+
+    private final MemberRepository memberRepository;
+
+		//CRUD => Create
+    public void register(Member member){
+        memberRepository.save(member);
+    }
+}
+
+```
+
+<h4>4. build.gradle -> lombok test환경 추가</h4>
+
+```xml
+// https://mvnrepository.com/artifact/org.projectlombok/lombok
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
+
+    testCompileOnly 'org.projectlombok:lombok'
+    testAnnotationProcessor 'org.projectlombok:lombok'
+```
+
