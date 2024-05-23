@@ -189,6 +189,6 @@ class MemberServiceTest {
 ```
 
 <img src="/images/start16.PNG">
-<img src="/images/start17.PNG">
 <img src="/images/start18.PNG">
+<img src="/images/start17.PNG">
 
