@@ -546,3 +546,17 @@ public class MemberContoller {
 
 <img src="/images/start24.PNG">
 <img src="/images/start25.PNG">
+
+<h4>2. MemberContrller -> 멤버 삭제</h4>
+
+<h6>MemberController 추가</h6>
+
+```java
+  @PostMapping("/delete/{id}")
+    public String delete(@PathVariable("id") String id){
+        Long memberId = Long.parseLong(id);        
+        memberService.delete(memberId);        
+        return "redirect:/member/list";
+
+    }
+```

@@ -57,4 +57,14 @@ public class MemberContoller {
         return "redirect:list";
     }
 
+    // <form th:action="@{/member/delete/{id}(id=${member.id})}" method="post" style="display:inline;">
+
+    @PostMapping("/delete/{id}")
+    public String delete(@PathVariable("id") String id){
+        Long memberId = Long.parseLong(id);
+        memberService.delete(memberId);
+        return "redirect:/member/list";
+
+    }
+
 }
