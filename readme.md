@@ -65,3 +65,15 @@ public class Member {
 
 <h4>2. 생성된 DB를 mysql 확인</h4>
 <img src="/images/start08.PNG">
+
+<h4>3. repository -> MemberRepository </h4>
+```java
+package com.member.repository;
+
+import com.member.entity.Member;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface MemberRepository extends JpaRepository<Member, Long> {
+}
+
+```
