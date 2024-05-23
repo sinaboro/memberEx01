@@ -290,7 +290,7 @@ class MemberServiceTest {
 
 <h2>5. Controller 구현 및 HTML 화면 구현 </h2>
 
-<h4>1. MemberContrller</h4>
+<h4>1. MemberContrller -> list</h4>
 
 ```java
 package com.member.controller;
@@ -366,6 +366,119 @@ public class MemberContoller {
     </table>
 </div>
 
+</body>
+</html>
+
+```
+
+<h4>1. MemberContrller -> 새글 작성</h4>
+
+<h6>list.html 추가</h6>
+
+```html
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Member Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+    <h2>Member List</h2>
+    <div>
+        <a th:href="@{/member/new}" class="btn btn-outline-dark float-right ">New Member</a>
+    </div>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>NAME</th>
+            <th>AGE</th>
+            <th>PHONE</th>
+            <th>ADDRESS</th>
+            <th>ACTIONS</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="member : ${members}">
+            <td th:text="${member.id}"></td>
+            <td th:text="${member.name}"></td>
+            <td th:text="${member.age}"></td>
+            <td th:text="${member.phone}"></td>
+            <td th:text="${member.address}"></td>3
+            <td>
+                <a th:href="@{/members/edit/{id}(id=${member.id})}">수정</a>&nbsp;&nbsp;
+                <form th:action="@{/members/delete/{id}(id=${member.id})}" method="post" style="display:inline;">
+                    <input type="hidden" name="_method" value="delete" />
+                    <button type="submit">삭제</button>
+                </form>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+</body>
+</html>
+```
+
+<h6>MemberContrller -> 추가</h6>
+
+```java
+@GetMapping("/new")
+    public String createForm(Model model){
+        log.info("create.............");
+        model.addAttribute("member", new Member());
+        return "member/newForm";
+    }
+
+    @PostMapping("/new")
+    public String create(@ModelAttribute("member") Member member){
+        log.info("------------------------");
+        memberService.register(member);
+        return "redirect:list";
+    }
+```
+<h6>newForm.html 추가</h6>
+
+```html
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>New Member</title>
+</head>
+<body>
+<h1>Add New Member</h1>
+<form th:action="@{/member/new}" th:object="${member}" method="post">
+    <div >
+        <label for="name">Name:</label>
+        <input type="text" id="name" th:field="*{name}"  />
+    </div>
+    <div >
+        <label for="age">age:</label>
+        <input type="text" id="age" th:field="*{age}"  />
+    </div>
+
+    <div >
+        <label for="phone">phone:</label>
+        <input type="text" id="phone" th:field="*{phone}"  />
+    </div>
+
+    <div >
+        <label for="address">address:</label>
+        <input type="text" id="address" th:field="*{address}"  />
+    </div>
+    
+    <div>
+        <button type="submit">Save</button>
+    </div>
+</form>
 </body>
 </html>
 

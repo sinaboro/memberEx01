@@ -7,6 +7,8 @@ import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
@@ -26,6 +28,19 @@ public class MemberContoller {
         log.info(members);
         return "member/list";
 
+    }
+    @GetMapping("/new")
+    public String createForm(Model model){
+        log.info("create.............");
+        model.addAttribute("member", new Member());
+        return "member/newForm";
+    }
+
+    @PostMapping("/new")
+    public String create(@ModelAttribute("member") Member member){
+        log.info("------------------------");
+        memberService.register(member);
+        return "redirect:list";
     }
 
 }
