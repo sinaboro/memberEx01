@@ -286,5 +286,87 @@ class MemberServiceTest {
         memberService.delete(memberId);
     }
 ```
-
 <img src="/images/start23.PNG">
+
+<h2>5. Controller 구현 및 HTML 화면 구현 </h2>
+
+<h4>1. MemberContrller</h4>
+
+```java
+package com.member.controller;
+
+import com.member.entity.Member;
+import com.member.service.MemberService;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.log4j.Log4j2;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import java.util.List;
+
+@Controller
+@RequestMapping("/member")
+@RequiredArgsConstructor
+@Log4j2
+public class MemberContoller {
+
+    private final MemberService memberService;
+
+    @GetMapping("/list")
+    public String list(Model model){
+        List<Member> members = memberService.readAll();
+        model.addAttribute("members", members);
+        log.info(members);
+        return "member/list";
+
+    }
+
+}
+```
+
+<h4>2. list.html</h4>
+
+```html
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Member Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+    <h2>Member List</h2>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>NAME</th>
+            <th>AGE</th>
+            <th>PHONE</th>
+            <th>ADDRESS</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="member : ${members}">
+            <td th:text="${member.id}"></td>
+            <td th:text="${member.name}"></td>
+            <td th:text="${member.age}"></td>
+            <td th:text="${member.phone}"></td>
+            <td th:text="${member.address}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+</body>
+</html>
+
+```

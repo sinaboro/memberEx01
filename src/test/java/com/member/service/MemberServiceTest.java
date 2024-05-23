@@ -55,8 +55,8 @@ class MemberServiceTest {
     @Test
     public void testInsert(){
         Member member = new Member();
-        member.setAge(20);
-        member.setName("까미");
+        member.setAge(12);
+        member.setName("야옹");
         member.setAddress("수원시");
 
         memberService.register(member);
