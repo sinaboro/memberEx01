@@ -24,3 +24,10 @@ spring.datasource.url=jdbc:mysql://localhost:3306/member?serverTimezone=UTC
 spring.datasource.username=root
 spring.datasource.password=1234
 ```
+
+<h3>4</h3>
+<img src="/images/start04.PNG">
+<h3>5</h3>
+<img src="/images/start05.PNG">
+<h3>6</h3>
+<img src="/images/start06.PNG">
