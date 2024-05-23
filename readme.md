@@ -31,3 +31,5 @@ spring.datasource.password=1234
 <img src="/images/start05.PNG">
 <h3>6</h3>
 <img src="/images/start06.PNG">
+<h3>7 프로젝트 폴더 및 파일 생성</h3>
+<img src="/images/start07.PNG">
