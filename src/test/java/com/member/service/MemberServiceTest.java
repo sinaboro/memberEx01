@@ -12,6 +12,15 @@ class MemberServiceTest {
     @Autowired
     private MemberService memberService;
 
+    //CRUD -> read
+    @Test
+    public void testRead(){
+        Long memberId = 1L;
+
+        Member team = memberService.read(memberId);
+        log.info("team : " + team);
+    }
+
     //CRUD -> update
     @Test
     public void testupdate(){

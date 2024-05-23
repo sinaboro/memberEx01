@@ -192,3 +192,37 @@ class MemberServiceTest {
 <img src="/images/start18.PNG">
 <img src="/images/start17.PNG">
 
+<h4>5. CRUD -> read</h4>
+
+```java
+public class MemberService {
+
+    private final MemberRepository memberRepository;
+
+    //CRUD => Create,Update
+    public void register(Member member){
+        memberRepository.save(member);
+    }
+
+```
+
+```java
+@SpringBootTest
+@Log4j2
+class MemberServiceTest {
+
+    @Autowired
+    private MemberService memberService;
+
+    //CRUD -> read
+    @Test
+    public void testRead(){
+        Long memberId = 1L;
+
+        Member team = memberService.read(memberId);
+        log.info("team : " + team);
+    }
+```
+<img src="/images/start19.PNG">
+<img src="/images/start20.PNG">
+<img src="/images/start21.PNG">
