@@ -226,3 +226,35 @@ class MemberServiceTest {
 <img src="/images/start19.PNG">
 <img src="/images/start20.PNG">
 <img src="/images/start21.PNG">
+
+<h4>5. CRUD -> read All(전체데이타가져오기)</h4>
+
+```java
+public class MemberService {
+
+    private final MemberRepository memberRepository;
+
+    //CRUD => Read All
+    public List<Member> readAll(){
+
+        List<Member> members = memberRepository.findAll();
+        return members;
+    }
+```
+
+```java
+class MemberServiceTest {
+
+    @Autowired
+    private MemberService memberService;
+
+    //CRUD -> read All
+    @Test
+    public void testReadAll(){
+
+        List<Member> members = memberService.readAll();
+        members.forEach(member -> log.info(member));
+    }
+```
+
+<img src="/images/start22.PNG">
