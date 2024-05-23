@@ -560,3 +560,79 @@ public class MemberContoller {
 
     }
 ```
+
+<h2>6. 페이징처리 </h2>
+
+<h6>MemberService 추가</h6>
+
+```java
+ public Page<Member> readAllPage(Pageable pageable){
+        Page<Member> memberPage = memberRepository.findAll(pageable);
+        return memberPage;
+
+    }
+```
+
+<h6>MemberController 추가</h6>
+
+```java
+@GetMapping("/list2")
+    public String list2(@RequestParam(defaultValue = "0") int page,
+                       @RequestParam(defaultValue = "3") int size, Model model) {
+        Pageable pageable = PageRequest.of(page, size);
+        Page<Member> memberPage = memberService.readAllPage(pageable);
+        model.addAttribute("memberPage", memberPage);
+        return "member/listPage";
+    }
+```
+
+<h6>listPage.html 추가</h6>
+
+```html
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Member List</title>
+</head>
+<body>
+<h1>Member List</h1>
+<div>
+    <a th:href="@{/member/new}" class="button">Insert New Member</a>
+</div>
+<table border="1">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Age</th>
+        <th>Phone</th>
+        <th>Address</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="member : ${memberPage.content}">
+        <td th:text="${member.id}"></td>
+        <td th:text="${member.name}"></td>
+        <td th:text="${member.age}"></td>
+        <td th:text="${member.phone}"></td>
+        <td th:text="${member.address}"></td>
+        <td>
+            <a th:href="@{/member/edit/{id}(id=${member.id})}">수정</a>
+            <form th:action="@{/member/delete/{id}(id=${member.id})}" method="post" style="display:inline;">
+                <input type="hidden" name="_method" value="delete" />
+                <button type="submit">삭제</button>
+            </form>
+        </td>
+    </tr>
+    </tbody>
+</table>
+<div>
+      <span th:each="i : ${#numbers.sequence(0, memberPage.totalPages - 1)}">
+            <a th:href="@{/member/list2(page=${i})}" th:text="${i + 1}">1</a>
+        </span>
+</div>
+</body>
+</html>
+
+```

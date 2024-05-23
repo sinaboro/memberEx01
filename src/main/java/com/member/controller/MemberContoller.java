@@ -4,6 +4,9 @@ import com.member.entity.Member;
 import com.member.service.MemberService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -64,5 +67,14 @@ public class MemberContoller {
         Long memberId = Long.parseLong(id);
         memberService.delete(memberId);
         return "redirect:/member/list";
+    }
+
+    @GetMapping("/list2")
+    public String list2(@RequestParam(defaultValue = "0") int page,
+                       @RequestParam(defaultValue = "3") int size, Model model) {
+        Pageable pageable = PageRequest.of(page, size);
+        Page<Member> memberPage = memberService.readAllPage(pageable);
+        model.addAttribute("memberPage", memberPage);
+        return "member/listPage";
     }
 }

@@ -5,6 +5,8 @@ import com.member.repository.MemberRepository;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
@@ -29,6 +31,12 @@ public class MemberService {
 
         List<Member> members = memberRepository.findAll();
         return members;
+    }
+
+    public Page<Member> readAllPage(Pageable pageable){
+        Page<Member> memberPage = memberRepository.findAll(pageable);
+        return memberPage;
+
     }
 
     //CRUD => Read
