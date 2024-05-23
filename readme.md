@@ -34,3 +34,31 @@ spring.datasource.password=1234
 
 <h3>7 프로젝트 폴더 및 파일 생성</h3>
 <img src="/images/start07.PNG">
+
+<h2>3. 코드 구현 </h2>
+
+<h4>entity 폴더 Member</h4>
+
+```java
+package com.member.entity;
+
+import jakarta.persistence.*;
+
+@Entity
+@Table(name = "member")
+public class Member {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "member_id")
+    private Long id;
+
+    private String name;
+
+    private int age;
+
+    private String phone;
+    private String address;
+
+}
+
+```
