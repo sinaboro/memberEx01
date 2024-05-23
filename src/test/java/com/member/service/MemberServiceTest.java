@@ -15,6 +15,13 @@ class MemberServiceTest {
     @Autowired
     private MemberService memberService;
 
+    //CRUD -> delete
+    @Test
+    public void testDelete(){
+        Long memberId = 2L;
+        memberService.delete(memberId);
+    }
+
     //CRUD -> read All
     @Test
     public void testReadAll(){

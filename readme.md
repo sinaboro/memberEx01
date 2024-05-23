@@ -258,3 +258,33 @@ class MemberServiceTest {
 ```
 
 <img src="/images/start22.PNG">
+
+<h4>6. CRUD -> delete</h4>
+
+```java
+@RequiredArgsConstructor
+public class MemberService {
+
+    private final MemberRepository memberRepository;
+
+    //CRUD => delete
+    public void delete(Long memberId){
+        memberRepository.deleteById(memberId);
+    }
+```
+
+```java
+class MemberServiceTest {
+
+    @Autowired
+    private MemberService memberService;
+
+    //CRUD -> delete
+    @Test
+    public void testDelete(){
+        Long memberId = 2L;
+        memberService.delete(memberId);
+    }
+```
+
+<img src="/images/start23.PNG">

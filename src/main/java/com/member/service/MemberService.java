@@ -19,6 +19,11 @@ public class MemberService {
 
     private final MemberRepository memberRepository;
 
+    //CRUD => delete
+    public void delete(Long memberId){
+        memberRepository.deleteById(memberId);
+    }
+
     //CRUD => Read All
     public List<Member> readAll(){
 
