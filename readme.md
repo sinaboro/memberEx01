@@ -170,6 +170,7 @@ class MemberServiceTest {
 <h4>5. CRUD -> update</h4>
 
 현재 데이타 조회해서 수정이 되는지 확인
+
 <img src="/images/start16.PNG">
 
 ```java
@@ -224,7 +225,6 @@ class MemberServiceTest {
         log.info("team : " + team);
     }
 ```
-<img src="/images/start19.PNG">
 <img src="/images/start20.PNG">
 <img src="/images/start21.PNG">
 
