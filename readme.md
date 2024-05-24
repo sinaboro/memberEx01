@@ -637,4 +637,4 @@ public class MemberContoller {
 
 ```
 
-<img src="/images/start026.PNG">
+<img src="/images/start26.PNG">
