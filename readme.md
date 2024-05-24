@@ -169,6 +169,9 @@ class MemberServiceTest {
 
 <h4>5. CRUD -> update</h4>
 
+현재 데이타 조회해서 수정이 되는지 확인
+<img src="/images/start16.PNG">
+
 ```java
   class MemberServiceTest {
 
@@ -187,8 +190,6 @@ class MemberServiceTest {
         memberService.register(member);
     }
 ```
-
-<img src="/images/start16.PNG">
 <img src="/images/start18.PNG">
 <img src="/images/start17.PNG">
 
