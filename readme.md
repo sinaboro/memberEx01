@@ -1,4 +1,4 @@
-(https://capsule-render.vercel.app/api?type=cylinder&height=200&color=gradient&text=Member%20Proejct&reversal=false&section=header)
+https://capsule-render.vercel.app/api?type=cylinder&height=200&color=gradient&text=Member%20Proejct&reversal=false&section=header
 
 <h2>1. DB설정(mysql) </h2>
 
